@@ -1,10 +1,11 @@
 const express = require("express");
 
-const todosRoutes = express.Router()
+const todosRoutes = express.Router();
 
-todosRoutes.get("/", (req, res) => {
-  return res.send({ message: "Hi It is todos routes" });
-});
+const { getTodosController } = require("./todos.controller.js");
+const getTodosValidation = require("./todos.validations.js");
+
+todosRoutes.get("/", getTodosController);
 
 module.exports = {
   todosRoutes,
