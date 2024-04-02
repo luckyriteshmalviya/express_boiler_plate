@@ -1,0 +1,1 @@
+const JWTKEY = require("./../constants/keys/JWTKEY");
