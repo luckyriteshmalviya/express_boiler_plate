@@ -3,4 +3,6 @@ const dataBase = {
     city: "Ahmedabad"
 }
 
-module.exports = { dataBase };
+const todos = {}
+
+module.exports = { dataBase, todos };
