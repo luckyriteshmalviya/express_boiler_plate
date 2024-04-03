@@ -1,5 +1,5 @@
-const JWTKEY = "RiteshMalviya"
+const JWTKEY = 'RiteshMalviya';
 
 module.exports = {
-    JWTKEY
-}
+  JWTKEY
+};

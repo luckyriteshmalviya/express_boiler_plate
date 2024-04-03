@@ -1,7 +1,7 @@
-const getAuthValidation = (req, res, next) =>{
-    next()
-}
+const getAuthValidation = (req, res, next) => {
+  next();
+};
 
 module.exports = {
-    getAuthValidation
-}
+  getAuthValidation
+};
