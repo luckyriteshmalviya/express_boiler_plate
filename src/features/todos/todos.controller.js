@@ -1,10 +1,8 @@
 const { Messages } = require('../../constants/messages');
 
-let dbArray = [];
+const dbArray = [];
 
-const getAllTodos = (req, res) => {
-  return res.send({ message: 'This is a Todos list', data: dbArray });
-};
+const getAllTodos = (req, res) => res.send({ message: 'This is a Todos list', data: dbArray });
 
 const createTodo = (req, res) => {
   const { title, description } = req.body;
@@ -23,6 +21,7 @@ const updateTodo = (req, res) => {
   const { id } = req.params;
   const { title, description } = req.body;
 
+  // eslint-disable-next-line no-plusplus
   for (let i = 0; i < dbArray.length; i++) {
     if (dbArray[i].todoId === id) {
       dbArray[i].todoTitle = title;
@@ -45,4 +44,9 @@ const deleteTodo = (req, res) => {
   return res.send({ message: Messages.todoDeleted, data: dbArray });
 };
 
-module.exports = { getAllTodos, createTodo, updateTodo, deleteTodo };
+module.exports = {
+  getAllTodos,
+  createTodo,
+  updateTodo,
+  deleteTodo,
+};
