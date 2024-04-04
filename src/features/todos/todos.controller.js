@@ -21,16 +21,16 @@ const updateTodo = (req, res) => {
   const { id } = req.params;
   const { title, description } = req.body;
 
-  // eslint-disable-next-line no-plusplus
   for (let i = 0; i < dbArray.length; i++) {
     if (dbArray[i].todoId === id) {
       dbArray[i].todoTitle = title;
       dbArray[i].todoDescription = description;
-      break;
+      res.status(200);
+      return res.send({ message: Messages.todoUpdated, data: dbArray });
     }
   }
-  res.status(200);
-  return res.send({ message: Messages.todoUpdated, data: dbArray });
+  
+  return res.send({message: "todo not found"})
 };
 
 const deleteTodo = (req, res) => {

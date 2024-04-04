@@ -1,9 +1,8 @@
 const { JWTKEY } = require("./../constants/keys.js");
 const jwt = require("jsonwebtoken");
-const { dataBase } = require("./database.services");
 
-const getToken = () => {
-  return jwt.sign(dataBase, JWTKEY);
+const getToken = (userData) => {
+  return jwt.sign(userData, JWTKEY);
 };
 
 const decodeToken = (token) => {

@@ -1,9 +1,11 @@
 const express = require('express');
 
 const authRoute = express.Router();
-const { getAuthController } = require('./auth.controller.js');
-const { getAuthValidation } = require('./auth.validations.js');
+const { getSignUp, getLogin } = require('./auth.controller.js');
+const { signUpValidation, loginValidation } = require('./auth.validations.js');
 
-authRoute.get('/', getAuthValidation, getAuthController);
+authRoute.post('/signUp', signUpValidation, getSignUp);
+authRoute.post('/login', loginValidation, getLogin);
+
 
 module.exports = { authRoute };

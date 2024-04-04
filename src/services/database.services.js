@@ -1,8 +1,5 @@
-const dataBase = {
-    name: "Ritesh Malviya",
-    city: "Ahmedabad"
-}
+const userTable = []
 
 const todos = {}
 
-module.exports = { dataBase, todos };
+module.exports = { todos, userTable };

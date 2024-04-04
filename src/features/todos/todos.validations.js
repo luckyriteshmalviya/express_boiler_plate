@@ -1,10 +1,26 @@
-const getTodosValidation = (req, res, next) => {
-  const { authorization } = req.headers;
+const { decodeToken } = require('../../services/jwt.services');
 
-  if (authorization) {
-    next();
-  } else {
-    res.send({ message: 'Need Authorization token' });
+const getAuthValidation = (req, res, next) => {
+  try {
+    const { authorization } = req.headers;
+
+    if (!authorization) {
+      res.status(401).send({ message: 'Need Authorization token' });
+    }
+
+    const userDetail = decodeToken(authorization);
+
+    if (userDetail) {
+      next();
+    } else {
+      res.status(401).send({ message: 'send proper authorization token' });
+    }
+  } catch (error) {
+    console.log(error.name, '4567', error.message);
+
+    if (error.name === 'JsonWebTokenError') {
+      res.status(401).send({ message: 'Please send proper authorization token' });
+    }
   }
 };
 
@@ -20,6 +36,6 @@ const createTodosValidation = (req, res, next) => {
 };
 
 module.exports = {
-  getTodosValidation,
   createTodosValidation,
+  getAuthValidation,
 };
