@@ -2,7 +2,7 @@ const { userTable } = require('../../services/database.services');
 const { getToken } = require('../../services/jwt.services');
 const { v4: uuidv4 } = require('uuid');
 
-let getSignUp = (req, res) => {
+const getSignUp = (req, res) => {
   const { name, email, mobileNumber, password } = req.body;
 
   const user = {
@@ -18,7 +18,7 @@ let getSignUp = (req, res) => {
   return res.send({ message: 'User signUp completed' });
 };
 
-let getLogin = (req, res) => {
+const getLogin = (req, res) => {
   const { email } = req.body;
   let currUser;
 
@@ -39,4 +39,8 @@ let getLogin = (req, res) => {
   return res.send({ message: 'User login successfully', authToken: token });
 };
 
-module.exports = { getSignUp, getLogin };
+const getAllUsers = (req, res) => {
+  res.send({ message: userTable });
+};
+
+module.exports = { getSignUp, getLogin, getAllUsers };
